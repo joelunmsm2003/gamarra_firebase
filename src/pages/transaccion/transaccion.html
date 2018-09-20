@@ -7,12 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>transaccion</ion-title>
+    <ion-title>{{fecha.date}}-{{fecha.month}}-{{fecha.year}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
+	<div *ngFor="let c of modeloshistorico | async ">
+   <ion-item> 
+
+   <div item-start style='min-width: 6em;'>{{c.nombre}}</div>
+
+
+   </ion-item>
+
+ 
+</div> 
 
 </ion-content>

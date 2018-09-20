@@ -2,6 +2,12 @@ page-home {
 
 font-family: $font-gamarra;
 
+    .calendar-col {
+
+        font-family: $font-gamarra;
+    }
+
+
 .categorias-slider{
 
 	padding: 0;
@@ -16,7 +22,7 @@ font-family: $font-gamarra;
     overflow-x: scroll;
     overflow-y: hidden;
     height: 63px;
-    position: fixed;
+   
     z-index: 7000;
 
 

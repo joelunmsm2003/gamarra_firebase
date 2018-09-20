@@ -18,6 +18,10 @@ notesCollection: AngularFirestoreCollection<any>;
 
 coloresCollection: AngularFirestoreCollection<any>;
 
+fechaCollection: AngularFirestoreCollection<any>;
+
+
+
   constructor(private afs: AngularFirestore) {
     
     this.notesCollection = this.afs.collection('modelos', (ref) => ref.limit(5));
@@ -42,6 +46,21 @@ coloresCollection: AngularFirestoreCollection<any>;
     this.coloresCollection = this.afs.collection('modelos/'+data+'/color', (ref) => ref.limit(5));
     // ['added', 'modified', 'removed']
     return this.coloresCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
+
+
+    getFecha(data): Observable<any[]> {
+
+    this.fechaCollection = this.afs.collection('modelos_historico/22-09-2018/modelos', (ref) => ref.limit(5));
+    // ['added', 'modified', 'removed']
+    return this.fechaCollection.snapshotChanges().pipe(
       map((actions) => {
         return actions.map((a) => {
           const data = a.payload.doc.data();

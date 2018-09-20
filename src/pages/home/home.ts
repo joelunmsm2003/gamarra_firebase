@@ -13,17 +13,25 @@ export class HomePage {
   currentEvents:any;
   modelos: Observable<any[]>;
   colores: Observable<any[]>;
+  modeloshistorico:Observable<any[]>;
   modelo:any;
   fondo:any;
 
   constructor(private modelosservice: ModelosProvider,public navCtrl: NavController) {
 
 
-    this.modelos = this.modelosservice.getData();
-
-    this.fondo = '#113';
 
 
+
+  this.modelos = this.modelosservice.getData();
+
+  this.modelosservice.getData().subscribe(data=>{
+
+        console.log('wuwywyw',data)  
+
+  })
+
+  this.fondo = '#113';
 
     console.log('colores',this.colores)
   
@@ -44,9 +52,14 @@ export class HomePage {
 
   onDaySelect(cata){
 
-  	console.log(cata)
+  	console.log('dia..',cata)
 
-    this.navCtrl.push(TransaccionPage)
+
+
+      this.navCtrl.push(TransaccionPage, {
+      fecha: cata,
+    })
+
 
 
 
