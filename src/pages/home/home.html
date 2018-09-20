@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Almacen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h2></h2>
+
+
+  <ion-calendar #calendar [events]="currentEvents"  (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+
+
+       <ul class="categorias-slider">
+
+
+          <li *ngFor = 'let m of modelos| async' (click)='traecolores(m)'>
+	
+
+          <span > {{m.nombre}} </span>
+
+
+      		</li>
+
+
+
+         
+
+          </ul>
+
+    <div padding>      
+ <h3 style='padding-top:67px;'>{{modelo}}
+
+ </h3> </div>
+
+  
+
+ <div *ngFor="let c of colores| async ">
+   <ion-item> 
+
+   <div item-start style='min-width: 6em;'>{{c.nombre}}</div>
+   <span class='barra1' >{{c.s}}</span>
+
+    <span class='barra1' >{{c.m}}</span>
+
+    <span class='barra1' >{{c.l}}</span>
+
+   </ion-item>
+
+ 
+</div> 
+
+</ion-content>

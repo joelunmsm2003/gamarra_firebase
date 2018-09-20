@@ -1,0 +1,7 @@
+{
+  "name": "gamarra",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
