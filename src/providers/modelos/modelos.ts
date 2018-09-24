@@ -20,11 +20,24 @@ coloresCollection: AngularFirestoreCollection<any>;
 
 fechaCollection: AngularFirestoreCollection<any>;
 
+colorCollection: AngularFirestoreCollection<any>;
 
+tallasCollection: AngularFirestoreCollection<any>;
+
+tipomovimientoCollection:AngularFirestoreCollection<any>;
+
+creamodeloCollection:AngularFirestoreCollection<any>;
+
+creamodelCollection:AngularFirestoreCollection<any>;
+
+creacolorCollection:AngularFirestoreCollection<any>;
+
+
+creatipomovimientoCollection:AngularFirestoreCollection<any>;
 
   constructor(private afs: AngularFirestore) {
     
-    this.notesCollection = this.afs.collection('modelos', (ref) => ref.limit(5));
+    this.notesCollection = this.afs.collection('modelos', (ref) => ref.limit(15));
 
   }
 
@@ -41,9 +54,25 @@ fechaCollection: AngularFirestoreCollection<any>;
     );
   }
 
+    getColor(): Observable<any[]> {
+    // ['added', 'modified', 'removed']
+
+    this.colorCollection = this.afs.collection('colores', (ref) => ref.limit(15));
+
+
+    return this.colorCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
+
   getColores(data): Observable<any[]> {
 
-    this.coloresCollection = this.afs.collection('modelos/'+data+'/color', (ref) => ref.limit(5));
+    this.coloresCollection = this.afs.collection('modelos/'+data+'/color', (ref) => ref.limit(15));
     // ['added', 'modified', 'removed']
     return this.coloresCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -55,10 +84,41 @@ fechaCollection: AngularFirestoreCollection<any>;
     );
   }
 
+    getTallas(): Observable<any[]> {
+
+    this.tallasCollection = this.afs.collection('talla/', (ref) => ref.limit(15));
+    // ['added', 'modified', 'removed']
+    return this.tallasCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
+
+     getTipomovimiento(): Observable<any[]> {
+
+    this.tipomovimientoCollection = this.afs.collection('tipo_movimiento/', (ref) => ref.limit(15));
+    // ['added', 'modified', 'removed']
+    return this.tipomovimientoCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
+
+
 
     getFecha(data): Observable<any[]> {
 
-    this.fechaCollection = this.afs.collection('modelos_historico/22-09-2018/modelos', (ref) => ref.limit(5));
+     console.log('provider',data)
+
+    this.fechaCollection = this.afs.collection('modelos_historico/'+data+'/modelos', (ref) => ref.limit(15));
     // ['added', 'modified', 'removed']
     return this.fechaCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -69,6 +129,63 @@ fechaCollection: AngularFirestoreCollection<any>;
       })
     );
   }
+
+   creaModelo(movimiento: string,fecha) {
+
+
+
+    this.creamodeloCollection = this.afs.collection('modelos_historico/'+fecha+'/modelos', (ref) => ref.limit(15));
+
+    const note = {
+      movimiento,
+      time: new Date().getTime(),
+    };
+    return this.creamodeloCollection.add(note);
+  }
+
+     creaModel(nombre) {
+
+
+
+    this.creamodelCollection = this.afs.collection('modelos/', (ref) => ref.limit(15));
+
+    const note = {
+      nombre:nombre,
+      
+    };
+    return this.creamodelCollection.add(note);
+  }
+
+
+     creaColor(nombre) {
+
+
+
+    this.creacolorCollection = this.afs.collection('colores/', (ref) => ref.limit(15));
+
+    const note = {
+      nombre:nombre,
+      
+    };
+    return this.creacolorCollection.add(note);
+  }
+
+       creaTipomovimiento(nombre) {
+
+
+
+    this.creatipomovimientoCollection = this.afs.collection('tipo_movimiento/', (ref) => ref.limit(15));
+
+    const note = {
+      nombre:nombre,
+      
+    };
+    return this.creatipomovimientoCollection.add(note);
+  }
+
+
+
+
 
 
   // /modelos/JmEq2J9cB6tEN9qjfReG/color

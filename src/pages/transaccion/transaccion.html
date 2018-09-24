@@ -6,25 +6,47 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{fecha.date}}-{{fecha.month}}-{{fecha.year}}</ion-title>
+  <ion-navbar color='dark'>
+    <ion-title>{{fecha}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
 
 	<div *ngFor="let c of modeloshistorico | async ">
-   <ion-item> 
+   <ion-item *ngIf='c.movimiento'> 
 
-   <div item-start style='min-width: 6em;'>{{c.nombre}}</div>
+
+   <div item-start style='min-width: 6em;'>{{c.movimiento.tipomovimiento}}</div>
+   
+  {{c.movimiento.modelo}}
+
+ 
+ 
+   <div item-end style='min-width: 6em;'>
+   {{c.movimiento.color}}
+
+     {{c.movimiento.talla}} {{c.movimiento.cantidad}}</div>
+
+
+ 
 
 
    </ion-item>
 
  
-</div> 
+</div>
 
+
+
+
+  
+  <ion-fab center bottom>
+    <button ion-fab color="danger" (click)='ingreso()'><ion-icon name="paw"></ion-icon></button>
+   
+  
+    
+  </ion-fab>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TransaccionPage } from '../transaccion/transaccion';
+import { ConfiguracionPage } from '../configuracion/configuracion';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 import { Observable } from 'rxjs';
 
@@ -57,6 +58,21 @@ export class HomePage {
 
 
       this.navCtrl.push(TransaccionPage, {
+      fecha: cata,
+    })
+
+
+
+
+  }
+
+    configuracion(cata){
+
+    console.log('dia..',cata)
+
+
+
+      this.navCtrl.push(ConfiguracionPage, {
       fecha: cata,
     })
 

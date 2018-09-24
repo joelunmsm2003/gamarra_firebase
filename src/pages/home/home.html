@@ -1,35 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Almacen</ion-title>
-  </ion-navbar>
-</ion-header>
 
 <ion-content>
-  <h2></h2>
-
-
-  <ion-calendar #calendar [events]="currentEvents"  (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
-
-
-       <ul class="categorias-slider">
-
-
-          <li *ngFor = 'let m of modelos| async' (click)='traecolores(m)'>
-	
-
-          <span > {{m.nombre}} </span>
-
-
-      		</li>
+  
 
 
 
-         
 
-          </ul>
+<ion-slides [slidesPerView]="3" >
+
+  <ion-slide  style='
+     border: 1px solid #fff;' *ngFor = 'let m of modelos| async' (click)='traecolores(m)'>
+   <span > {{m.nombre}} </span>
+
+
+  </ion-slide>
+
+
+
+</ion-slides>
+
+
+
+
 
     <div padding>      
- <h3 style='padding-top:67px;'>{{modelo}}
+ <h3 >{{modelo}}
 
  </h3> </div>
 
@@ -49,5 +43,15 @@
 
  
 </div> 
+
+  <ion-calendar #calendar [events]="currentEvents"  (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+
+
+  <ion-fab center bottom>
+    <button ion-fab color="dark" (click)='configuracion()'><ion-icon name="settings"></ion-icon></button>
+   
+  
+    
+  </ion-fab>
 
 </ion-content>
