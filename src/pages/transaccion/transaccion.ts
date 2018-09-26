@@ -21,6 +21,7 @@ export class TransaccionPage {
 
   modeloshistorico:Observable<any[]>;
   fecha:any;
+  contador:any;
 
   constructor(public modalCtrl: ModalController,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
 
@@ -33,7 +34,8 @@ export class TransaccionPage {
 
   this.modelosservice.getFecha(this.fecha).subscribe(data => {
 
-    console.log('modelosservice',data)
+    console.log('modelosservice',data.length)
+    this.contador=data.length
 
   });
 
@@ -54,9 +56,18 @@ export class TransaccionPage {
 
   ingreso(){
 
-    this.navCtrl.push(MovimientoPage, {fecha:this.fecha
+    // this.navCtrl.push(MovimientoPage, {fecha:this.fecha
       
-    })
+    // })
+
+
+
+   let profileModal = this.modalCtrl.create(MovimientoPage, { fecha:this.fecha});
+   profileModal.onDidDismiss(data => {
+     
+
+   });
+   profileModal.present();
 
   }
 

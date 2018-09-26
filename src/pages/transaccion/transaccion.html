@@ -15,7 +15,14 @@
 
 <ion-content>
 
-	<div *ngFor="let c of modeloshistorico | async ">
+
+  <h5 padding *ngIf='contador==0'>No existe movimientos en esta fecha </h5>
+
+
+  <h5  padding *ngIf='contador>0'>{{contador}} movimientos</h5>
+
+	
+  <div *ngFor="let c of modeloshistorico | async ">
    <ion-item *ngIf='c.movimiento'> 
 
 

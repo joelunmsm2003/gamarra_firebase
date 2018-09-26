@@ -8,17 +8,29 @@
 
   <ion-navbar color='dark'>
     <ion-title>Movimientos</ion-title>
+
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)='closeModal()' >
+        <ion-icon (click)='closeModal()'  style='font-size: 32px;
+    float: right;' name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
   </ion-navbar>
+
+  
 
 </ion-header>
 
 
 <ion-content padding>
 
-
-
+  <h5 padding> Registre movimientos del {{fecha}}</h5>
 
   <ion-list>
+
 
   <ion-item>
     <ion-label>Modelo</ion-label>

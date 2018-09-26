@@ -3,29 +3,19 @@
   
 
 
+<!-- <ion-item>
+  <ion-label>Escoge un modelo</ion-label>
+  <ion-select [(ngModel)]="m" (ionChange)="traecolores(m)"> >
+    <ion-option *ngFor="let m of modelos| async" [value]="m">{{m.nombre}}</ion-option>
+  </ion-select>
+</ion-item>
 
 
-<ion-slides [slidesPerView]="3" >
-
-  <ion-slide  style='
-     border: 1px solid #fff;' *ngFor = 'let m of modelos| async' (click)='traecolores(m)'>
-   <span > {{m.nombre}} </span>
-
-
-  </ion-slide>
-
-
-
-</ion-slides>
+ -->
 
 
 
 
-
-    <div padding>      
- <h3 >{{modelo}}
-
- </h3> </div>
 
   
 

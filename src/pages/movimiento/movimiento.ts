@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 import { Observable } from 'rxjs';
+
+import { TransaccionPage } from '../transaccion/transaccion';
+
 /**
  * Generated class for the MovimientoPage page.
  *
@@ -28,7 +31,7 @@ export class MovimientoPage {
 
  fecha:any;
 
-  constructor(private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private view:ViewController,public appCtrl: App,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
 
 
   	   this.fecha=navParams.get("fecha")
@@ -56,7 +59,20 @@ export class MovimientoPage {
 
 		this.modelosservice.creaModelo(data,this.fecha);
 
+    this.view.dismiss()
+
 
   }
+
+  closeModal(){
+
+
+  
+
+    this.view.dismiss()
+
+
+}
+
 
 }
