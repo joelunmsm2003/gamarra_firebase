@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,ViewController } from 'ionic-angular';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 
 import { AgregamodeloPage } from '../agregamodelo/agregamodelo';
+import { EditamodeloPage } from '../editamodelo/editamodelo';
 /**
  * Generated class for the ModelosPage page.
  *
@@ -19,7 +20,7 @@ export class ModelosPage {
 
   modelos:any
 
-  constructor(private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private view:ViewController,public modalCtrl: ModalController,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
 
 
   this.modelos = this.modelosservice.getData();
@@ -31,13 +32,44 @@ export class ModelosPage {
     console.log('ionViewDidLoad ModelosPage');
   }
 
+  closeModal(){
+
+
+  
+
+    this.view.dismiss()
+
+
+}
+
 
   agrega(){
 
-  	this.navCtrl.push(AgregamodeloPage, {
- 
-    })
+  	
+
+      let profileModal = this.modalCtrl.create(AgregamodeloPage, {});
+   profileModal.onDidDismiss(data => {
+     
+
+   });
+   profileModal.present();
+
 
   }
+
+    editar(data){
+
+    
+
+      let profileModal = this.modalCtrl.create(EditamodeloPage, {data:data});
+   profileModal.onDidDismiss(data => {
+     
+
+   });
+   profileModal.present();
+
+
+  }
+
 
 }

@@ -33,7 +33,7 @@ creamodelCollection:AngularFirestoreCollection<any>;
 creacolorCollection:AngularFirestoreCollection<any>;
 
 
-creatipomovimientoCollection:AngularFirestoreCollection<any>;
+crealocalCollection:AngularFirestoreCollection<any>;
 
   constructor(private afs: AngularFirestore) {
     
@@ -98,9 +98,9 @@ creatipomovimientoCollection:AngularFirestoreCollection<any>;
     );
   }
 
-     getTipomovimiento(): Observable<any[]> {
+     getLocales(): Observable<any[]> {
 
-    this.tipomovimientoCollection = this.afs.collection('tipo_movimiento/', (ref) => ref.limit(15));
+    this.tipomovimientoCollection = this.afs.collection('locales/', (ref) => ref.limit(15));
     // ['added', 'modified', 'removed']
     return this.tipomovimientoCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -170,18 +170,83 @@ creatipomovimientoCollection:AngularFirestoreCollection<any>;
     return this.creacolorCollection.add(note);
   }
 
-       creaTipomovimiento(nombre) {
+       creaLocal(nombre) {
 
 
 
-    this.creatipomovimientoCollection = this.afs.collection('tipo_movimiento/', (ref) => ref.limit(15));
+    this.crealocalCollection = this.afs.collection('locales/', (ref) => ref.limit(15));
 
     const note = {
       nombre:nombre,
       
     };
-    return this.creatipomovimientoCollection.add(note);
+    return this.crealocalCollection.add(note);
   }
+
+   getLocal(id: string) {
+
+
+     console.log('id....',id)
+    return this.afs.doc<any>('locales/${id}');
+  }
+
+   updateLocal(data: any) {
+
+
+    this.afs.doc<any>('locales/'+data.id)
+    .update({ nombre: data.nombre}); 
+
+    
+  }
+
+     eliminaLocal(data: any) {
+
+
+    this.afs.doc<any>('locales/'+data.id)
+    .delete(); 
+
+    
+  }
+
+
+     updateColor(data: any) {
+
+
+    this.afs.doc<any>('colores/'+data.id)
+    .update({ nombre: data.nombre}); 
+
+    
+  }
+
+     eliminaColor(data: any) {
+
+
+    this.afs.doc<any>('colores/'+data.id)
+    .delete(); 
+
+    
+  }
+
+       updateModelo(data: any) {
+
+
+    this.afs.doc<any>('modales/'+data.id)
+    .update({ nombre: data.nombre}); 
+
+    
+  }
+
+     eliminaModelo(data: any) {
+
+
+    this.afs.doc<any>('modelos/'+data.id)
+    .delete(); 
+
+    
+  }
+
+
+
 
 
 

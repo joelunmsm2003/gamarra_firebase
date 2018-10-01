@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='dark'>
-    <ion-title>Tipos de Movimiento</ion-title>
+    <ion-title>Local</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,6 +19,7 @@
    <ion-item> 
 
    	{{c.nombre}}
+    <button ion-button item-end (click)=editar(c)>Editar</button>
    </ion-item>
    	
 

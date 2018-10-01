@@ -22,7 +22,9 @@ import { ModelosProvider } from '../providers/modelos/modelos';
 import { ModelosPage } from '../pages/modelos/modelos';
 
 import { ColoresPage } from '../pages/colores/colores';
-
+import { EditalocalPage } from '../pages/editalocal/editalocal';
+import { EditacolorPage } from '../pages/editacolor/editacolor';
+import { EditamodeloPage } from '../pages/editamodelo/editamodelo';
 import { AgregamodeloPage } from '../pages/agregamodelo/agregamodelo';
 
 import { AgregatipomovimientoPage } from '../pages/agregatipomovimiento/agregatipomovimiento';
@@ -46,7 +48,10 @@ import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
     AgregamodeloPage,
     AgregacolorPage,
     AgregatipomovimientoPage,
-    TipomovimientoPage
+    TipomovimientoPage,
+    EditalocalPage,
+    EditacolorPage,
+    EditamodeloPage,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,10 @@ import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
     AgregamodeloPage,
     AgregacolorPage,
     AgregatipomovimientoPage,
-    TipomovimientoPage
+    TipomovimientoPage,
+    EditalocalPage,
+    EditacolorPage,
+    EditamodeloPage,
   ],
   providers: [
     StatusBar,

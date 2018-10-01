@@ -56,8 +56,15 @@
   </ion-item>
 
    <ion-item>
-    <ion-label>Movimiento</ion-label>
-    <ion-select [(ngModel)]="movimiento.tipomovimiento">
+    <ion-label>Origen</ion-label>
+    <ion-select [(ngModel)]="movimiento.origen">
+      <ion-option  *ngFor="let c of tipomovimiento | async " value="{{c.nombre}}">{{c.nombre}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+     <ion-item>
+    <ion-label>Destino</ion-label>
+    <ion-select [(ngModel)]="movimiento.destino">
       <ion-option  *ngFor="let c of tipomovimiento | async " value="{{c.nombre}}">{{c.nombre}}</ion-option>
     </ion-select>
   </ion-item>

@@ -45,7 +45,7 @@ export class ConfiguracionPage {
 
   }
 
-    tipomovimiento(){
+    locales(){
 
   	   this.navCtrl.push(TipomovimientoPage, {
  

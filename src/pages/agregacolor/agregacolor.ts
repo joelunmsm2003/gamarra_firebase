@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 
 
@@ -17,7 +17,7 @@ import { ModelosProvider } from '../../providers/modelos/modelos';
 })
 export class AgregacolorPage {
 
-  constructor(private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private view:ViewController,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -29,7 +29,20 @@ export class AgregacolorPage {
   	this.modelosservice.creaColor(nombre);
 
 
+    this.view.dismiss()
 
   }
+
+
+  closeModal(){
+
+
+  
+
+    this.view.dismiss()
+
+
+}
+
 
 }

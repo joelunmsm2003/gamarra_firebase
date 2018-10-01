@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 
 import { AgregatipomovimientoPage } from '../agregatipomovimiento/agregatipomovimiento';
+import { EditalocalPage } from '../editalocal/editalocal';
+
 
 /**
  * Generated class for the TipomovimientoPage page.
@@ -21,12 +23,12 @@ export class TipomovimientoPage {
 
 tipomovimientos:any;
 
-  constructor(private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
 
 
   	
 
-  	this.tipomovimientos= this.modelosservice.getTipomovimiento()
+  	this.tipomovimientos= this.modelosservice.getLocales()
   }
 
   ionViewDidLoad() {
@@ -35,9 +37,31 @@ tipomovimientos:any;
 
     agrega(){
 
-  	this.navCtrl.push(AgregatipomovimientoPage, {
- 
-    })
+
+
+      let profileModal = this.modalCtrl.create(AgregatipomovimientoPage, {});
+   profileModal.onDidDismiss(data => {
+     
+
+   });
+   profileModal.present();
+
+
+
+  }
+
+   editar(data){
+
+
+
+      let profileModal = this.modalCtrl.create(EditalocalPage, {data:data});
+   profileModal.onDidDismiss(data => {
+     
+
+   });
+   profileModal.present();
+
+
 
   }
 

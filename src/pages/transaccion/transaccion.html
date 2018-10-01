@@ -21,37 +21,61 @@
 
   <h5  padding *ngIf='contador>0'>{{contador}} movimientos</h5>
 
-	
-  <div *ngFor="let c of modeloshistorico | async ">
-   <ion-item *ngIf='c.movimiento'> 
+	<ion-list>
+      <div *ngFor="let c of modeloshistorico | async ">
+  
+    <ion-item>
 
+      <ion-row>
 
-   <div item-start style='min-width: 6em;'>{{c.movimiento.tipomovimiento}}</div>
-   
-  {{c.movimiento.modelo}}
+        <ion-col col-12>
 
- 
- 
-   <div item-end style='min-width: 6em;'>
-   {{c.movimiento.color}}
+            <ion-row>
 
-     {{c.movimiento.talla}} {{c.movimiento.cantidad}}</div>
+            <ion-col >{{c.movimiento.origen}} <ion-icon name="paper-plane"></ion-icon>
 
+           {{c.movimiento.destino}} </ion-col>
 
  
 
+          </ion-row>
 
-   </ion-item>
+        </ion-col>
 
+        <ion-col col-12>
+
+          <ion-row>
+
+                     <ion-col>{{c.movimiento.modelo}}</ion-col>
+
+            <ion-col>{{c.movimiento.color}}</ion-col>
+
+          <ion-col>{{c.movimiento.talla}}</ion-col>
+
+         <ion-col> {{c.movimiento.cantidad}}</ion-col>
+
+          </ion-row>
+    
+        </ion-col>
+
+   </ion-row>
+
+
+  </ion-item>
  
 </div>
+
+</ion-list>
+
+
+
 
 
 
 
   
   <ion-fab center bottom>
-    <button ion-fab color="danger" (click)='ingreso()'><ion-icon name="paw"></ion-icon></button>
+    <button ion-fab color="danger" (click)='ingreso()'><ion-icon name="ios-add"></ion-icon></button>
    
   
     

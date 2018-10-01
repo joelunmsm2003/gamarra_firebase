@@ -48,7 +48,7 @@ export class MovimientoPage {
 
        this.tallas= this.modelosservice.getTallas()
 
-       this.tipomovimiento= this.modelosservice.getTipomovimiento()
+       this.tipomovimiento= this.modelosservice.getLocales()
 
       
 
