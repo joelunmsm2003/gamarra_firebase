@@ -4,10 +4,10 @@ import { AgregatipomovimientoPage } from './agregatipomovimiento';
 
 @NgModule({
   declarations: [
-    AgregatipomovimientoPage,
+
   ],
   imports: [
-    IonicPageModule.forChild(AgregatipomovimientoPage),
+
   ],
 })
 export class AgregatipomovimientoPageModule {}

@@ -21,12 +21,31 @@ export class TransaccionPage {
 
   modeloshistorico:Observable<any[]>;
   fecha:any;
+  fechax:any;
   contador:any;
 
   constructor(public modalCtrl: ModalController,private modelosservice: ModelosProvider,public navCtrl: NavController, public navParams: NavParams) {
 
 
+
+
   this.fecha=navParams.get("fecha")
+
+
+  if (this.fecha.month==9){
+
+    this.fecha.month='Octubre'
+  }
+
+   if (this.fecha.month==10){
+
+    this.fecha.month='Noviembre'
+  }
+
+    if (this.fecha.month==11){
+
+    this.fecha.month='Diciembre'
+  }
 
   this.fecha=this.fecha.date+'-'+this.fecha.month+'-'+this.fecha.year
 
@@ -68,6 +87,15 @@ export class TransaccionPage {
 
    });
    profileModal.present();
+
+  }
+
+  eliminar(fecha,id){
+
+    console.log(fecha,id)
+
+    this.modelosservice.eliminaMovimiento(fecha,id);
+
 
   }
 

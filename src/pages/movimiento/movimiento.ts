@@ -40,6 +40,7 @@ export class MovimientoPage {
   }
 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad MovimientoPage');
 
      this.modelos= this.modelosservice.getData()

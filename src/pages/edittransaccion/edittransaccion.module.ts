@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ColoresPage } from './colores';
+import { EdittransaccionPage } from './edittransaccion';
 
 @NgModule({
   declarations: [
-    
+ 
   ],
   imports: [
-   
+
   ],
 })
-export class ColoresPageModule {}
+export class EdittransaccionPageModule {}

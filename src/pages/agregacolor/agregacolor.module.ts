@@ -4,10 +4,10 @@ import { AgregacolorPage } from './agregacolor';
 
 @NgModule({
   declarations: [
-    AgregacolorPage,
+
   ],
   imports: [
-    IonicPageModule.forChild(AgregacolorPage),
+
   ],
 })
 export class AgregacolorPageModule {}

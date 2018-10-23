@@ -16,10 +16,12 @@
 <ion-content>
 
 
-  <h5 padding *ngIf='contador==0'>No existe movimientos en esta fecha </h5>
+  <div style='height: 15px;'></div>
+
+  <div style='text-align: center;'  *ngIf='contador==0'>No existe movimientos en esta fecha </div>
 
 
-  <h5  padding *ngIf='contador>0'>{{contador}} movimientos</h5>
+  <div style='text-align: center;' *ngIf='contador>0'>{{contador}} movimientos</div>
 
 	<ion-list>
       <div *ngFor="let c of modeloshistorico | async ">
@@ -53,6 +55,9 @@
           <ion-col>{{c.movimiento.talla}}</ion-col>
 
          <ion-col> {{c.movimiento.cantidad}}</ion-col>
+
+         <ion-col>         <ion-icon (click)='eliminar(fecha,c.id)'  style='font-size: 32px;
+    float: right;' name="trash"></ion-icon></ion-col>
 
           </ion-row>
     

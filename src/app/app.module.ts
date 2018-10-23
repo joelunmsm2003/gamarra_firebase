@@ -26,7 +26,7 @@ import { EditalocalPage } from '../pages/editalocal/editalocal';
 import { EditacolorPage } from '../pages/editacolor/editacolor';
 import { EditamodeloPage } from '../pages/editamodelo/editamodelo';
 import { AgregamodeloPage } from '../pages/agregamodelo/agregamodelo';
-
+import { EdittransaccionPage } from '../pages/edittransaccion/edittransaccion';
 import { AgregatipomovimientoPage } from '../pages/agregatipomovimiento/agregatipomovimiento';
 import { AgregacolorPage } from '../pages/agregacolor/agregacolor';
 
@@ -52,19 +52,21 @@ import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
     EditalocalPage,
     EditacolorPage,
     EditamodeloPage,
+    EdittransaccionPage
   ],
   imports: [
     BrowserModule,
     CalendarModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
     ContactPage,
+    EdittransaccionPage,
     HomePage,
     TabsPage,
     TransaccionPage,

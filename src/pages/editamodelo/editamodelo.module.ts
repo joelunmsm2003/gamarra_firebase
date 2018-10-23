@@ -4,10 +4,10 @@ import { EditamodeloPage } from './editamodelo';
 
 @NgModule({
   declarations: [
-    EditamodeloPage,
+    
   ],
   imports: [
-    IonicPageModule.forChild(EditamodeloPage),
+ 
   ],
 })
 export class EditamodeloPageModule {}

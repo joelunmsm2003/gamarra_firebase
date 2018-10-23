@@ -245,6 +245,19 @@ crealocalCollection:AngularFirestoreCollection<any>;
     
   }
 
+       eliminaMovimiento(fecha: any,id:any) {
+
+
+         console.log(fecha,id)
+
+
+    this.afs.doc<any>('modelos_historico/'+fecha+'/modelos/'+id)
+    .delete(); 
+
+  }
+
+
+
 
 
 
