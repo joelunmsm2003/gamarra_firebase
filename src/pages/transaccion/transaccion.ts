@@ -32,22 +32,27 @@ export class TransaccionPage {
   this.fecha=navParams.get("fecha")
 
 
-  if (this.fecha.month==9){
+  console.log('fecha..peee.',this.fecha)
 
-    this.fecha.month='Octubre'
-  }
 
-   if (this.fecha.month==10){
+  // if (this.fecha.month==9){
 
-    this.fecha.month='Noviembre'
-  }
+  //   this.fecha.month='Octubre'
+  // }
 
-    if (this.fecha.month==11){
+  //  if (this.fecha.month==10){
 
-    this.fecha.month='Diciembre'
-  }
+  //   this.fecha.month='Noviembre'
+  // }
 
-  this.fecha=this.fecha.date+'-'+this.fecha.month+'-'+this.fecha.year
+  //   if (this.fecha.month==11){
+
+  //   this.fecha.month='Diciembre'
+  // }
+
+  this.fecha.monthverdadero=this.fecha.month+1
+
+  this.fecha=this.fecha.date+'-'+this.fecha.monthverdadero+'-'+this.fecha.year
 
   this.modeloshistorico = this.modelosservice.getFecha(this.fecha);
 
@@ -59,7 +64,7 @@ export class TransaccionPage {
   });
 
 
- console.log('hshshs',this.fecha)
+
 
   }
 

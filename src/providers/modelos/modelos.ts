@@ -72,7 +72,7 @@ crealocalCollection:AngularFirestoreCollection<any>;
 
   getColores(data): Observable<any[]> {
 
-    this.coloresCollection = this.afs.collection('modelos/'+data+'/color', (ref) => ref.limit(15));
+    this.coloresCollection = this.afs.collection('modelos/'+data+'/color', (ref) => ref.limit(50));
     // ['added', 'modified', 'removed']
     return this.coloresCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -100,7 +100,7 @@ crealocalCollection:AngularFirestoreCollection<any>;
 
      getLocales(): Observable<any[]> {
 
-    this.tipomovimientoCollection = this.afs.collection('locales/', (ref) => ref.limit(15));
+    this.tipomovimientoCollection = this.afs.collection('locales/', (ref) => ref.limit(50));
     // ['added', 'modified', 'removed']
     return this.tipomovimientoCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -116,9 +116,9 @@ crealocalCollection:AngularFirestoreCollection<any>;
 
     getFecha(data): Observable<any[]> {
 
-     console.log('provider',data)
+     console.log('trae data...',data)
 
-    this.fechaCollection = this.afs.collection('modelos_historico/'+data+'/modelos', (ref) => ref.limit(15));
+    this.fechaCollection = this.afs.collection('modelos_historico/'+data+'/modelos', (ref) => ref.limit(500));
     // ['added', 'modified', 'removed']
     return this.fechaCollection.snapshotChanges().pipe(
       map((actions) => {
