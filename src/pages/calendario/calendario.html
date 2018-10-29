@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color='dark'>
+    <ion-title>Calendario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<h1>Escoja una fecha</h1>
+<ion-content padding>
+  
+
+
+
+  
+
+
+  <ion-calendar #calendar [events]="currentEvents"  (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+
+
+
+</ion-content>

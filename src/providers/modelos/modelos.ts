@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 import { map } from 'rxjs/operators';
+import { Http , Response } from '@angular/http';
 
 /*
   Generated class for the ModelosProvider provider.
@@ -10,8 +13,19 @@ import { map } from 'rxjs/operators';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+export interface Categoria {
+   id: number;
+   nombre: string;
+   photo: string;
+}
+
+
 @Injectable()
 export class ModelosProvider {
+
+
+
 
 
 notesCollection: AngularFirestoreCollection<any>;
@@ -35,11 +49,21 @@ creacolorCollection:AngularFirestoreCollection<any>;
 
 crealocalCollection:AngularFirestoreCollection<any>;
 
-  constructor(private afs: AngularFirestore) {
+totalesCollection:AngularFirestoreCollection<any>;
+
+  constructor(private afs: AngularFirestore,public http: Http) {
+
+
     
     this.notesCollection = this.afs.collection('modelos', (ref) => ref.limit(15));
 
+
+
+
+
   }
+
+
 
 
   getData(): Observable<any[]> {
@@ -53,6 +77,23 @@ crealocalCollection:AngularFirestoreCollection<any>;
       })
     );
   }
+
+    getTotales(): Observable<any[]> {
+    
+
+    this.totalesCollection = this.afs.collection('totales', (ref) => ref.limit(1000));
+
+
+    return this.totalesCollection.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          return { id: a.payload.doc.id, ...data };
+        });
+      })
+    );
+  }
+
 
     getColor(): Observable<any[]> {
     // ['added', 'modified', 'removed']
@@ -118,7 +159,7 @@ crealocalCollection:AngularFirestoreCollection<any>;
 
      console.log('trae data...',data)
 
-    this.fechaCollection = this.afs.collection('modelos_historico/'+data+'/modelos', (ref) => ref.limit(500));
+    this.fechaCollection = this.afs.collection('modelos_historico/'+data+'/modelos', (ref) => ref.limit(1000));
     // ['added', 'modified', 'removed']
     return this.fechaCollection.snapshotChanges().pipe(
       map((actions) => {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TransaccionPage } from '../transaccion/transaccion';
-import { CalendarioPage } from '../calendario/calendario';
+
 import { ConfiguracionPage } from '../configuracion/configuracion';
 import { ModelosProvider } from '../../providers/modelos/modelos';
 import { Observable } from 'rxjs';
@@ -12,10 +12,10 @@ import 'rxjs/add/operator/map';
 
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-calendario',
+  templateUrl: 'calendario.html'
 })
-export class HomePage {
+export class CalendarioPage {
 
 
   posts: any;
@@ -29,20 +29,11 @@ export class HomePage {
   movi:any;
   locales:any;
   lll:any;
-  movimientos:any;
-  _movimientos:any;
 
 totales: Observable<any[]>;
 
 
   constructor(public http: Http,db: AngularFirestore,private modelosservice: ModelosProvider,public navCtrl: NavController) {
-
-
-
-    //db.collection(u'modelos_historico').document(day).collection('modelos').get()
-
-      //var citiesRef = db.collection("cities");
-
 
 
 
@@ -56,29 +47,7 @@ totales: Observable<any[]>;
 
     });
 
-   this.modelosservice.getFecha('20-10-2018').subscribe(data => {
-   
-       console.log('0',data)
 
-       this._movimientos=data
-
-       var data= data.filter(c => c.movimiento.destino === 'TORRE')
-
-       var data= data.filter(c => c.movimiento.modelo === 'IBHET')
-
-       let newcars = {}
-
-       data.forEach(car => {
-      newcars[car.movimiento.color] ? // check if that array exists or not in newcars object
-      newcars[car.movimiento.color].push({talla: car.movimiento.talla, cantidad: car.movimiento.cantidad})  // just push
-      : (newcars[car.movimiento.color] = [], newcars[car.movimiento.color].push({talla: car.movimiento.talla, cantidad: car.movimiento.cantidad})) // create a new array and push
-
-
-      })
-
-
-       
-    });
 
   this.locales = this.modelosservice.getLocales();
 
@@ -180,34 +149,11 @@ totales: Observable<any[]>;
 
   }
 
+ 
 
   bus(lo,mo){
 
     console.log(lo,mo)
-
-      var data = this._movimientos
-
-      var data= data.filter(c => c.movimiento.destino === lo)
-
-      var data= data.filter(c => c.movimiento.modelo === mo)
-
-      let newcars = {}
-
-      data.forEach(car => {
-      newcars[car.movimiento.color] ? // check if that array exists or not in newcars object
-      newcars[car.movimiento.color].push({talla: car.movimiento.talla, cantidad: car.movimiento.cantidad})  // just push
-      : (newcars[car.movimiento.color] = [], newcars[car.movimiento.color].push({talla: car.movimiento.talla, cantidad: car.movimiento.cantidad})) // create a new array and push
-
-
-      })
-
-
-      console.log('newcars',newcars)
-
-
-
-
-    //this.pedido.filter(c => c.id === data.id)
 
     this.http.get('http://192.168.1.109:8000/movimientos/'+lo+'/'+mo).subscribe(data => {
    
@@ -279,16 +225,6 @@ totales: Observable<any[]>;
 
       }]
     });
-
-    var total=[]
-
-    for(var m in this.movi){
-
-       console.log(this.movi[m]['color__nombre'])
-
-       total.push({name:this.movi[m]['color__nombre'],y:this.movi[m]['total']})
-     }
-
 
 
     });

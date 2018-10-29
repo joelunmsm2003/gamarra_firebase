@@ -20,8 +20,9 @@ import { firebaseConfig } from './credenciales';
 import { ModelosProvider } from '../providers/modelos/modelos';
 
 import { ModelosPage } from '../pages/modelos/modelos';
-
+import { HttpClientModule,HttpClient } from '@angular/common/http'; 
 import { ColoresPage } from '../pages/colores/colores';
+import { CalendarioPage } from '../pages/calendario/calendario';
 import { EditalocalPage } from '../pages/editalocal/editalocal';
 import { EditacolorPage } from '../pages/editacolor/editacolor';
 import { EditamodeloPage } from '../pages/editamodelo/editamodelo';
@@ -29,7 +30,7 @@ import { AgregamodeloPage } from '../pages/agregamodelo/agregamodelo';
 import { EdittransaccionPage } from '../pages/edittransaccion/edittransaccion';
 import { AgregatipomovimientoPage } from '../pages/agregatipomovimiento/agregatipomovimiento';
 import { AgregacolorPage } from '../pages/agregacolor/agregacolor';
-
+import { Http, RequestOptions, HttpModule } from '@angular/http';
 
 import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
 
@@ -52,11 +53,14 @@ import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
     EditalocalPage,
     EditacolorPage,
     EditamodeloPage,
-    EdittransaccionPage
+    EdittransaccionPage,
+    CalendarioPage
   ],
   imports: [
     BrowserModule,
     CalendarModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence()
@@ -79,6 +83,7 @@ import { TipomovimientoPage } from '../pages/tipomovimiento/tipomovimiento';
     AgregatipomovimientoPage,
     TipomovimientoPage,
     EditalocalPage,
+    CalendarioPage,
     EditacolorPage,
     EditamodeloPage,
   ],
